@@ -1,5 +1,7 @@
+package Principal;
 
-import java.util.Date;
+import java.lang.String;
+
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -15,9 +17,9 @@ public class Aluno
 {
     private String nome;
     private int matricula;
-    private Date nascimento;
+    private String nascimento;
 
-    public Aluno(String nome, int matricula, Date nascimento) 
+    public Aluno(String nome, int matricula, String nascimento) 
     {
         this.nome = nome;
         this.matricula = matricula;
@@ -47,12 +49,12 @@ public class Aluno
         this.matricula = matricula;
     }
 
-    public Date getNascimento() 
+    public String getNascimento() 
     {
         return nascimento;
     }
 
-    public void setNascimento(Date nascimento) 
+    public void setNascimento(String nascimento) 
     {
         this.nascimento = nascimento;
     }

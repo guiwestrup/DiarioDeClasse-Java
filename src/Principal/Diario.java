@@ -1,3 +1,5 @@
+package Principal;
+
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -25,6 +27,10 @@ public class Diario
         exames = new HashMap<>();
         alunos = new HashMap<>();
     }
+
+    Diario() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     public void addAluno(Aluno aluno)
     {
@@ -48,6 +54,24 @@ public class Diario
             notas.add(exame.getNota());
         }
         return notas;
+    }
+    
+    public ArrayList<String> getListAluno()
+    {
+        ArrayList<String> listaaluno = new ArrayList<String>();
+        return listaaluno;
+    }
+    public HashMap<Integer, Aluno> getAlunos() 
+    { 
+         return alunos; 
+    } 
+
+    public String getDisciplina() {
+        return disciplina;
+    }
+
+    public void setDisciplina(String disciplina) {
+        this.disciplina = disciplina;
     }
     
     
