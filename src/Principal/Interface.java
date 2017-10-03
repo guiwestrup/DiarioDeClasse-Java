@@ -5,6 +5,7 @@
  */
 package Principal;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
@@ -42,6 +43,9 @@ public class Interface
                     case "2":
                         addExame();
                         break;
+                    case "3":
+                        listarNotas();
+                        break;
                     case "s":
                         sair = true;
                         break;
@@ -62,6 +66,8 @@ public class Interface
         System.out.println();
         System.out.println("1: Adicionar Aluno");
         System.out.println("2: Adicionar Exame");
+        System.out.println("3: Listar notas dos Alunos");
+        System.out.println("4: Mostra Diário");
         System.out.println("S: Sair");
         
         return input.next().toLowerCase(); 
@@ -86,6 +92,21 @@ public class Interface
         System.out.println("-Cadastro de Exame-");
         System.out.println();
         listaAluno();
+        System.out.println();
+        int matricula = getMatriculaAluno();
+        System.out.println("Entre com a data do exame: ");
+        String data = input.next();
+        System.out.println("Entre com a nota: ");
+        Double nota = input.nextDouble();
+        
+        diario.addExame(new Exame(diario.getAlunos().get(matricula),data,nota));
+    }
+    
+    //Pergunta a matrícula
+    private int getMatriculaAluno()
+    {
+        System.out.println("Digite a Matrícula do Aluno");
+        return input.nextInt();
     }
     //Método para listar alunos
     private void listaAluno()
@@ -95,6 +116,37 @@ public class Interface
         for (Aluno aluno : diario.getAlunos().values())
         {
             System.out.println(aluno.getMatricula()+ " - "+aluno.getNome());
+        }
+    }
+    //Lista as notas dos alunos
+    private void listarNotas()
+    {
+        System.out.println("-Lista de notas-");
+        System.out.println();
+        listaAluno();
+        System.out.println();
+        int matricula = getMatriculaAluno();
+        System.out.println("Notas do Aluno:" + diario.getAlunos().get(matricula).getNome());
+        
+        for (double nota : diario.getNotasAluno(matricula))
+        {
+            System.out.println(nota+ " ");
+        }
+        System.out.println();
+    }
+    //Método para ver o diário
+    private void mostraDiario()
+    {
+        System.out.println("Diário de Classe");
+        System.out.println("Disciplina: "+diario.getDisciplina());
+        for (ArrayList<Exame> exames : diario.getDiario().values())
+        {
+            System.out.println(exames.get(0).getAluno().getNome() + "\t");
+            for (Exame exame : exames)
+            {
+                System.out.println(exame.getNota() + "\t");
+            }
+            System.out.println();
         }
     }
     //Gambiarra funcional para limpar a tela by: Nathan
